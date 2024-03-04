@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Internal Domain Name Calculator for TrueCharts Apps</title>
+	<meta name="description" content="An online tool to find the internal domain name of a TrueCharts app">
+	<link rel="stylesheet" href="style.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+	<header>
+		<h1>Internal Domain Name Calculator for TrueCharts Apps</h1>
+		<p>
+			An online tool to find the internal domain name of a <a href="https://truecharts.org/charts/description_list/">TrueCharts app</a>. Enter the name of the app and service you are working with, and the internal domain will be generated below.
+			<br><br>
+			This is for reference only. If you have access to your TrueNAS system, I would recommend installing and running <a href="https://github.com/Heavybullets8/heavy_script">HeavyScript</a> to get domain names programmatically instead of using this tool. For example, you can run <code>heavyscript dns</code> to get DNS entries for the main services of your apps, or <code>heavyscript -a</code> to get DNS entries for all accessible services.
+			<br><br>
+		</p>
+	</header>
+	<section>
+		<label>
+			<span class="name required">Catalog App Name</span>
+			<span class="tooltip">
+				The name of the app as shown in the TrueCharts catalog.
+				<br><br>
+				Examples: traefik, plex, etc.
+			</span>
+			<input type="text" id="catalogAppName" name="catalogAppName" placeholder="ex. traefik" required>
+		</label>
+		<br>
+		<label for="customAppName">
+			<span class="name">Custom App Name</span>
+			<span class="tooltip">
+				The actual name of the app. Usually, this is the same as the catalog app name, but if you renamed the app when you created it, put its new name here. Otherwise, you can leave this blank.
+				<br><br>
+				For example, if you have multiple instances of the same app running, they will have different names.
+				<br><br>
+				Examples: traefik-2, plex-for-family, etc.
+			</span>
+			<input type="text" id="customAppName" name="customAppName" placeholder="ex. traefik-2">
+		</label>
+		<br>
+		<label for="serviceName">
+			<span class="name">Service Name</span>
+			<span class="tooltip">
+				The service name of the app. Some apps have multiple services running on different endpoints. You can leave this blank if you want to find the domain name for the main service. Otherwise, put the service name here.
+				<br><br>
+				Examples: metrics, redis, etc.
+			</span>
+			<input type="text" id="serviceName" name="serviceName" placeholder="ex. metrics">
+		</label>
+		<br>
+		<label for="portNumber">
+			<span class="name">Port Number</span>
+			<span class="tooltip">
+				The port number of the service. If you know the service is running on a specific port, enter it here.
+				<br><br>
+				Examples: 80, 443, 8080, etc.
+			</span>
+			<input type="number" id="portNumber" name="portNumber" placeholder="ex. 80" min="0" max="65535">
+		</label>
+		</form>
+		<div class="arrow">
+			<span>￬</span>
+		</div>
+		<output id="output"></output>
+	</section>
+	<footer>
+		<p>
+			Based on information from the <a href="https://truecharts.org/manual/SCALE/guides/linking-apps/">TrueCharts documentation</a> and the <a href="https://github.com/kubernetes/dns/blob/master/docs/specification.md">Kubernetes DNS specification</a>.
+			<br><br>
+			Made by <a href="https://johng.io">John G</a>. View the source on <a href="https://github.com/jerboa88/domain-name-generator-for-truecharts">GitHub</a>.
+		</p>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+
+</html>

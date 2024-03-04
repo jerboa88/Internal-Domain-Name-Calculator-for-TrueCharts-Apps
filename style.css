@@ -1,0 +1,152 @@
+:root {
+	--primary: #316ce6;
+	--secondary: #FF8811;
+	--base-100: #0a1429;
+	--base-200: #111f3b;
+	--base-300: #293856;
+	--content: #f7f9fd;
+	--error: #ff4d4d;
+	--max-width: 700px;
+	--padding: 48px;
+	--padding-sm: 16px;
+	--padding-xs: 6px;
+	--border-width: 1px;
+	--radius: 16px;
+	--radius-sm: 8px;
+	--transition: transform .1s;
+	--grow: scale(1.01);
+	--shrink: scale(.99);
+}
+
+body {
+	font-family: 'Roboto', Arial, sans-serif;
+	background-color: var(--base-100);
+	color: var(--content);
+	margin: 0;
+	padding: var(--padding);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+header,
+section,
+footer {
+	width: 100%;
+	max-width: var(--max-width);
+	display: flex;
+	flex-direction: column;
+	background-color: var(--base-200);
+	margin: var(--padding-sm);
+	padding: var(--padding);
+	border-radius: var(--radius);
+	border: var(--border-width) solid var(--base-300);
+}
+
+h1 {
+	margin-block-start: 0;
+	margin-block-end: 0;
+	margin-bottom: var(--padding-sm);
+}
+
+p {
+	line-height: 1.5;
+}
+
+a:link,
+a:visited {
+	display: inline-block;
+	color: var(--secondary);
+	border-bottom: var(--border-width) solid transparent;
+	text-decoration: none;
+	transition: color .1s;
+}
+
+a:hover {
+	border-bottom-color: var(--secondary);
+}
+
+code {
+	background: var(--base-100);
+	padding: var(--padding-xs);
+	border-radius: var(--radius-sm);
+	text-wrap: nowrap;
+}
+
+label {
+	display: inline-block;
+}
+
+label .name {
+	display: inline-block;
+	padding: var(--padding-sm) var(--border-width);
+}
+
+label .tooltip {
+	display: inline-block;
+	position: absolute;
+	visibility: hidden;
+	max-width: var(--max-width);
+	margin: var(--padding-sm);
+}
+
+.name:hover+.tooltip {
+	visibility: visible;
+}
+
+label .required::after {
+	content: ' *';
+	color: var(--error);
+}
+
+input:invalid {
+	border: var(--border-width) solid var(--error) !important;
+}
+
+input,
+output {
+	width: -webkit-fill-available;
+	padding: var(--padding-sm);
+	border-radius: var(--radius-sm);
+	border: var(--border-width) solid var(--base-300);
+	background-color: var(--base-100);
+	color: var(--content);
+}
+
+output {
+	text-align: center;
+	background-color: var(--base-100);
+	cursor: copy;
+	transition: var(--transition);
+}
+
+output:hover {
+	transform: var(--grow);
+}
+
+output:active {
+	transform: var(--shrink);
+}
+
+.arrow {
+	margin: var(--padding-sm);
+	font-size: x-large;
+	text-align: center;
+}
+
+.notification {
+	position: fixed;
+	bottom: var(--padding);
+	right: var(--padding);
+}
+
+.notification,
+.tooltip {
+	padding: var(--padding-sm);
+	background-color: var(--base-300);
+	color: var(--content);
+	border-radius: var(--radius-sm);
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, .7);
+	z-index: 2;
+}
