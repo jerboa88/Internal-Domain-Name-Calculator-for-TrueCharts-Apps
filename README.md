@@ -2,7 +2,11 @@
 <div align="center">
   <img class="projectLogo" src="android-chrome-512x512.png" alt="Project logo" title="Project logo" width="256">
 
-  <h1 class="projectName">Internal Domain Name Calculator for TrueCharts Apps</h1>
+  <h1 class="projectName">
+    <a href="https://internal-domain-name-calculator-for-truecharts-apps.johng.io/">
+      Internal Domain Name Calculator for TrueCharts Apps
+    </a>
+  </h1>
 
   <p class="projectBadges">
     <img src="https://img.shields.io/badge/type-Web_App-ff5722.svg" alt="Project type" title="Project type">
