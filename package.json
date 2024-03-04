@@ -1,0 +1,37 @@
+{
+  "name": "internal-domain-name-calculator-for-truecharts-apps",
+  "version": "1.0.0",
+  "description": "An online tool to find the internal domain name of a TrueCharts app",
+  "main": "script.js",
+  "scripts": {
+    "test": "cypress open",
+    "cypress:open": "cypress open",
+    "start": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerboa88/Internal-Domain-Name-Calculator-for-TrueCharts-Apps.git"
+  },
+  "keywords": [
+    "kubernetes",
+    "website",
+    "helm",
+    "webapp",
+    "helm-charts",
+    "domain-names",
+    "truenas-scale",
+    "truecharts"
+  ],
+  "author": "jerboa88",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jerboa88/Internal-Domain-Name-Calculator-for-TrueCharts-Apps/issues"
+  },
+  "homepage": "https://github.com/jerboa88/Internal-Domain-Name-Calculator-for-TrueCharts-Apps",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "cypress": "^13.6.6"
+  }
+}
