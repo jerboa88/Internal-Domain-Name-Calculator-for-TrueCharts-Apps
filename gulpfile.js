@@ -77,7 +77,7 @@ gulp.task('watch', () => {
 });
 
 // Build task
-gulp.task('build', gulp.series('typescript', 'sass', 'htmlmin', 'imagemin', 'copy'));
+gulp.task('build', gulp.parallel('typescript', 'sass', 'htmlmin', 'imagemin', 'copy'));
 
 // Default task
-gulp.task('default', gulp.series('build', 'serve', 'watch'));
+gulp.task('default', gulp.series('build', gulp.parallel('serve', 'watch')));
