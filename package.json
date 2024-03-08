@@ -2,11 +2,10 @@
   "name": "internal-domain-name-calculator-for-truecharts-apps",
   "version": "1.0.0",
   "description": "An online tool to find the internal domain name of a TrueCharts app",
-  "main": "script.js",
   "scripts": {
+    "build": "gulp build",
     "test": "cypress open",
-    "cypress:open": "cypress open",
-    "start": "http-server"
+    "start": "gulp serve"
   },
   "repository": {
     "type": "git",
@@ -28,10 +27,17 @@
     "url": "https://github.com/jerboa88/Internal-Domain-Name-Calculator-for-TrueCharts-Apps/issues"
   },
   "homepage": "https://github.com/jerboa88/Internal-Domain-Name-Calculator-for-TrueCharts-Apps",
-  "dependencies": {
-    "http-server": "^14.1.1"
-  },
   "devDependencies": {
-    "cypress": "^13.6.6"
-  }
+    "cypress": "^13.6.6",
+    "gulp": "^4.0.2",
+    "gulp-connect": "^5.7.0",
+    "gulp-copy": "^4.0.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^9.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "node-sass": "^9.0.0",
+    "typescript": "^5.4.2"
+  },
+  "type": "module"
 }
