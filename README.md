@@ -25,7 +25,7 @@
 </div>
 
 
-# About
+## About
 A single page web app written with in HTML, [SCSS](https://sass-lang.com/), and [TypeScript](https://www.typescriptlang.org/). [Gulp](https://gulpjs.com/) is used to build the project and [Cypress](https://www.cypress.io/) is used for end-to-end testing.
 
 
