@@ -36,6 +36,7 @@
     "gulp-imagemin": "^9.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify": "^3.0.2",
     "node-sass": "^9.0.0",
     "typescript": "^5.4.2"
   },

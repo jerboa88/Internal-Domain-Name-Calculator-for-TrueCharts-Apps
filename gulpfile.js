@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import typescript from 'gulp-typescript';
+import uglify from 'gulp-uglify';
 import htmlmin from 'gulp-htmlmin';
 import imagemin from 'gulp-imagemin';
 import copy from 'gulp-copy';
@@ -21,20 +22,31 @@ const globs = {
 gulp.task('typescript', () => {
 	return gulp.src(globs.ts)
 		.pipe(typescript())
+		.pipe(uglify())
 		.pipe(gulp.dest('dist'));
 });
 
 // Task to compile SCSS files to CSS
 gulp.task('sass', () => {
 	return gulp.src(globs.scss)
-		.pipe(sass().on('error', sass.logError))
+		.pipe(
+			sass({ outputStyle: 'compressed' })
+				.on('error', sass.logError)
+		)
 		.pipe(gulp.dest('dist'));
 });
 
 // Task to minify HTML files
 gulp.task('htmlmin', () => {
 	return gulp.src(globs.html)
-		.pipe(htmlmin({ collapseWhitespace: true }))
+		.pipe(
+			htmlmin({
+				collapseWhitespace: true,
+				collapseBooleanAttributes: true,
+				removeComments: true,
+				removeEmptyAttributes: true
+			})
+		)
 		.pipe(gulp.dest('dist'));
 });
 
