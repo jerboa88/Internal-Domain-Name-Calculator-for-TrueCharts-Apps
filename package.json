@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "An online tool to find the internal domain name of a TrueCharts app",
   "scripts": {
+    "dev": "gulp dev",
     "build": "gulp build",
     "test": "gulp test",
     "start": "gulp serve"

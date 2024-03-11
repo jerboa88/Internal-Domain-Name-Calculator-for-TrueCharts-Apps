@@ -85,7 +85,7 @@ function startServer() {
 function runTests(done) {
 	connect.server({
 		root: outputFolder,
-		port: port
+		port: port + 1,
 	});
 
 	cypress.run().then((results) => {
