@@ -7,9 +7,12 @@ import copy from 'gulp-copy';
 import connect from 'gulp-connect';
 import gulpSass from 'gulp-sass';
 import nodeSass from "node-sass";
+import cypress from 'cypress';
 
 
 const sass = gulpSass(nodeSass);
+const outputFolder = 'dist';
+const port = 8000;
 const globs = {
 	ts: 'src/**/*.ts',
 	scss: 'src/**/*.scss',
@@ -23,7 +26,7 @@ gulp.task('typescript', () => {
 	return gulp.src(globs.ts)
 		.pipe(typescript())
 		.pipe(uglify())
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest(outputFolder));
 });
 
 // Task to compile SCSS files to CSS
@@ -33,7 +36,7 @@ gulp.task('sass', () => {
 			sass({ outputStyle: 'compressed' })
 				.on('error', sass.logError)
 		)
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest(outputFolder));
 });
 
 // Task to minify HTML files
@@ -47,34 +50,54 @@ gulp.task('htmlmin', () => {
 				removeEmptyAttributes: true
 			})
 		)
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest(outputFolder));
 });
 
 // Task to minify images
 gulp.task('imagemin', () => {
 	return gulp.src(globs.images)
 		.pipe(imagemin())
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest(outputFolder));
 });
 
 // Task to copy other files from src to dist
 gulp.task('copy', () => {
 	return gulp.src(globs.other)
-		.pipe(copy('dist', { prefix: 1 }));
+		.pipe(copy(outputFolder, { prefix: 1 }));
 });
 
 // Task to start HTTP server
 gulp.task('serve', () => {
 	connect.server({
-		root: 'dist',
-		port: 8000,
+		root: outputFolder,
+		port: port,
 		livereload: true,
 	});
 });
 
+
+// Task to run tests using Cypress
+gulp.task('test', (done) => {
+	connect.server({
+		root: outputFolder,
+		port: port
+	});
+
+	cypress.run().then((results) => {
+		connect.serverClose();
+
+		if (results.totalFailed > 0) {
+			done(new Error('Cypress tests failed'));
+		}
+
+		done();
+	});
+});
+
+
 // Task to reload the server
 gulp.task('reload', (done) => {
-	gulp.src('dist')
+	gulp.src(outputFolder)
 		.pipe(connect.reload());
 	done();
 });
