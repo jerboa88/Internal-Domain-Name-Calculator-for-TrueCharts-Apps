@@ -21,26 +21,29 @@ const globs = {
 	other: ['src/site.webmanifest'],
 };
 
-// Task to compile TypeScript files to JavaScript
-gulp.task('typescript', () => {
+
+// Task for minifying and compiling TypeScript files to JavaScript
+function compileTypescript() {
 	return gulp.src(globs.ts)
 		.pipe(typescript())
 		.pipe(uglify())
 		.pipe(gulp.dest(outputFolder));
-});
+}
 
-// Task to compile SCSS files to CSS
-gulp.task('sass', () => {
+
+// Task for minifying and compiling SCSS files to CSS
+function compileSass() {
 	return gulp.src(globs.scss)
 		.pipe(
 			sass({ outputStyle: 'compressed' })
 				.on('error', sass.logError)
 		)
 		.pipe(gulp.dest(outputFolder));
-});
+}
 
-// Task to minify HTML files
-gulp.task('htmlmin', () => {
+
+// Task for minifying HTML files
+function minifyHtml() {
 	return gulp.src(globs.html)
 		.pipe(
 			htmlmin({
@@ -51,33 +54,35 @@ gulp.task('htmlmin', () => {
 			})
 		)
 		.pipe(gulp.dest(outputFolder));
-});
+}
 
-// Task to minify images
-gulp.task('imagemin', () => {
+
+// Task for minifying images
+function minifyImages() {
 	return gulp.src(globs.images)
 		.pipe(imagemin())
 		.pipe(gulp.dest(outputFolder));
-});
+}
 
-// Task to copy other files from src to dist
-gulp.task('copy', () => {
+// Task for copying miscellaneous files from src/ to dist/
+function copyFiles() {
 	return gulp.src(globs.other)
 		.pipe(copy(outputFolder, { prefix: 1 }));
-});
+}
 
-// Task to start HTTP server
-gulp.task('serve', () => {
-	connect.server({
+
+// Task for starting an HTTP server
+function startServer() {
+	return connect.server({
 		root: outputFolder,
 		port: port,
 		livereload: true,
 	});
-});
+}
 
 
-// Task to run tests using Cypress
-gulp.task('test', (done) => {
+// Task for running tests with Cypress
+function runTests(done) {
 	connect.server({
 		root: outputFolder,
 		port: port
@@ -92,27 +97,34 @@ gulp.task('test', (done) => {
 
 		done();
 	});
-});
+}
 
 
-// Task to reload the server
-gulp.task('reload', (done) => {
+// Task to reload the web server
+function reloadServer(done) {
 	gulp.src(outputFolder)
 		.pipe(connect.reload());
 	done();
-});
+}
 
-// Task to watch changes in files
-gulp.task('watch', () => {
-	gulp.watch(globs.ts, gulp.series('typescript', 'reload'));
-	gulp.watch(globs.scss, gulp.series('sass', 'reload'));
-	gulp.watch(globs.html, gulp.series('htmlmin', 'reload'));
-	gulp.watch(globs.images, gulp.series('imagemin', 'reload'));
-	gulp.watch(globs.other, gulp.series('copy', 'reload'));
-});
 
-// Build task
-gulp.task('build', gulp.parallel('typescript', 'sass', 'htmlmin', 'imagemin', 'copy'));
+// Task to watch for changes in files
+function watch() {
+	gulp.watch(globs.ts, gulp.series(compileTypescript, reloadServer));
+	gulp.watch(globs.scss, gulp.series(compileSass, reloadServer));
+	gulp.watch(globs.html, gulp.series(minifyHtml, reloadServer));
+	gulp.watch(globs.images, gulp.series(minifyImages, reloadServer));
+	gulp.watch(globs.other, gulp.series(copyFiles, reloadServer));
+}
 
-// Default task
-gulp.task('default', gulp.series('build', gulp.parallel('serve', 'watch')));
+
+// Task for building the project
+const buildProject = gulp.parallel(compileTypescript, compileSass, minifyHtml, minifyImages, copyFiles);
+
+
+export {
+	buildProject as default,
+	buildProject as build,
+	startServer as serve,
+	runTests as test
+};
