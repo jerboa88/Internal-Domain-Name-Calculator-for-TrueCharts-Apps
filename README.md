@@ -61,9 +61,16 @@ Fill out the following fields and the domain name will be updated automatically:
 ## Contributing
 Contributions, issues, and forks are welcome.
 
-This is a single page web app written in HTML, [SCSS](https://sass-lang.com/), and [TypeScript](https://www.typescriptlang.org/). [Gulp](https://gulpjs.com/) is used to build the project and [Cypress](https://www.cypress.io/) is used for end-to-end testing.
+### Project Structure
+- This is a single page web app written in HTML, [SCSS](https://sass-lang.com/), and [TypeScript](https://www.typescriptlang.org/)
+- [Gulp](https://gulpjs.com/) is used to build the project
+- [Cypress](https://www.cypress.io/) is used for end-to-end testing.
 
-Run tests using `npm test`.
+### Commands
+- Run `npm run dev` for development. This builds the project, starts the web server, and then watches for changes to files in the src/ directory
+- Run `npm run build` to build the project once
+- Run `npm test` to run tests with Cypress
+- Run `npm start` to start the web server
 
 
 ## License
