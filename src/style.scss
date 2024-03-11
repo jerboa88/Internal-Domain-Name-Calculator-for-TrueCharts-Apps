@@ -6,8 +6,8 @@
 	--base-300: #293856;
 	--content: #f7f9fd;
 	--error: #ff4d4d;
-	--max-width: 700px;
-	--padding: 48px;
+	--max-width: 640px;
+	--padding: 24px;
 	--padding-sm: 16px;
 	--padding-xs: 6px;
 	--border-width: 1px;
@@ -16,6 +16,12 @@
 	--transition: transform .1s;
 	--grow: scale(1.01);
 	--shrink: scale(.99);
+}
+
+@media (min-width: 640px) {
+	:root {
+		--padding: 48px;
+	}
 }
 
 body {
@@ -33,7 +39,7 @@ body {
 header,
 section,
 footer {
-	width: 100%;
+	width: 90%;
 	max-width: var(--max-width);
 	display: flex;
 	flex-direction: column;
