@@ -28,8 +28,6 @@
 ## About
 An online tool to find the internal domain name of a [TrueCharts](https://truecharts.org/charts/description_list/) app. Enter the name of the app and service you are working with, and the internal domain will be generated.
 
-This single page web app is written in HTML, [SCSS](https://sass-lang.com/), and [TypeScript](https://www.typescriptlang.org/). [Gulp](https://gulpjs.com/) is used to build the project and [Cypress](https://www.cypress.io/) is used for end-to-end testing.
-
 Based on information from the [TrueCharts documentation](https://truecharts.org/manual/SCALE/guides/linking-apps/) and the [Kubernetes DNS specification](https://github.com/kubernetes/dns/blob/master/docs/specification.md).
 
 > [!NOTE]
@@ -51,6 +49,10 @@ Based on information from the [TrueCharts documentation](https://truecharts.org/
 
 ## Contributing
 Contributions, issues, and forks are welcome.
+
+This single page web app is written in HTML, [SCSS](https://sass-lang.com/), and [TypeScript](https://www.typescriptlang.org/). [Gulp](https://gulpjs.com/) is used to build the project and [Cypress](https://www.cypress.io/) is used for end-to-end testing.
+
+Run tests using `npm test`.
 
 
 ## License
