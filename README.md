@@ -28,8 +28,6 @@
 ## About
 An online tool to find the internal domain name of a [TrueCharts](https://truecharts.org/charts/description_list/) app. Enter the name of the app and service you are working with, and the internal domain will be generated.
 
-This single page web app is written in HTML, [SCSS](https://sass-lang.com/), and [TypeScript](https://www.typescriptlang.org/). [Gulp](https://gulpjs.com/) is used to build the project and [Cypress](https://www.cypress.io/) is used for end-to-end testing.
-
 Based on information from the [TrueCharts documentation](https://truecharts.org/manual/SCALE/guides/linking-apps/) and the [Kubernetes DNS specification](https://github.com/kubernetes/dns/blob/master/docs/specification.md).
 
 > [!NOTE]
@@ -37,20 +35,35 @@ Based on information from the [TrueCharts documentation](https://truecharts.org/
 
 
 ## Installation
-1. Install Node.js and NPM (if they are not already set up on your system). See [nodejs.org](https://nodejs.org/) for more details.
-2. Install the Gulp command line utility with `npm install --global gulp-cli`.
-3. Clone the repo with `https://github.com/jerboa88/Internal-Domain-Name-Calculator-for-TrueCharts-Apps.git`. Alternatively, you can download the repository as a zip file and extract it.
-4. Enter the project root with `cd Internal-Domain-Name-Calculator-for-TrueCharts-Apps`.
-5. Use `npm install` to install the app and all of its dependencies.
+1. Install tools:
+   - Node.js and NPM. (see [nodejs.org](https://nodejs.org/) for more details)
+   - `gulp-cli` with `npm install --global gulp-cli`
+2. Download the source code:
+   - Clone the repo with `https://github.com/jerboa88/Internal-Domain-Name-Calculator-for-TrueCharts-Apps.git`, or
+   - Download the repository as a zip file and extract it
+3. Enter the project root with `cd Internal-Domain-Name-Calculator-for-TrueCharts-Apps`.
+4. Use `npm install` to install the app and all of its dependencies.
+5. Use `npm run build` to build the project and copy assets to the `dist/` directory.
+6. Serve the project using `npm start` or use the static HTTP server of your choice. By default, the site can be accessed at [localhost:8000](https://localhost:8000).
 
 
 ## Usage
-1. Use `npm run build` to build the project and copy assets to the `dist/` directory.
-2. Serve the project using `npm start` or use the static HTTP server of your choice. By default, the site can be accessed at [localhost:8000](https://localhost:8000).
+Fill out the following fields and the domain name will be updated automatically:
+- **Catalog App Name**: The name of the app as shown in the TrueCharts catalog. Examples: `traefik`, `plex`, etc.
+
+- **Custom App Name**: The actual name of the app. Usually, this is the same as the catalog app name, but if you renamed the app when you created it, put its new name here. Otherwise, you can leave this blank. For example, if you have multiple instances of the same app running, they will have different names. Examples: `traefik-2`, `plex-for-family`, etc.
+
+- **Service Name**: The service name of the app. Some apps have multiple services running on different endpoints. You can leave this blank if you want to find the domain name for the main service. Otherwise, put the service name here. Examples: `metrics`, `redis`, etc.
+
+- **Port Number**: The port number of the service. If you know the service is running on a specific port, enter it here. Examples: `80`, `443`, `8080`, etc.
 
 
 ## Contributing
 Contributions, issues, and forks are welcome.
+
+This is a single page web app written in HTML, [SCSS](https://sass-lang.com/), and [TypeScript](https://www.typescriptlang.org/). [Gulp](https://gulpjs.com/) is used to build the project and [Cypress](https://www.cypress.io/) is used for end-to-end testing.
+
+Run tests using `npm test`.
 
 
 ## License
