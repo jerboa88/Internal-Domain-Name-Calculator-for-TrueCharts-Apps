@@ -120,10 +120,12 @@ function watch() {
 
 // Task for building the project
 const buildProject = gulp.parallel(compileTypescript, compileSass, minifyHtml, minifyImages, copyFiles);
+const devWatch = gulp.series(buildProject, gulp.parallel(startServer, watch));
 
 
 export {
-	buildProject as default,
+	devWatch as default,
+	devWatch as dev,
 	buildProject as build,
 	startServer as serve,
 	runTests as test
