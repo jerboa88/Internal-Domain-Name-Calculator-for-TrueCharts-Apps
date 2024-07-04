@@ -15,7 +15,7 @@
     <a href="LICENSE">
       <img src="https://img.shields.io/github/license/jerboa88/Internal-Domain-Name-Calculator-for-TrueCharts-Apps.svg" alt="Project license" title="Project license"/>
     </a>
-    <a href="https://internal-domain-name-calculator-for-truecharts-apps.johng.io/" title="Project URL">
+    <a href="https://internal-domain-name-calculator-for-truecharts-apps.johng.io/" title="Internal Domain Name Calculator for TrueCharts Apps">
 			<img src="https://img.shields.io/website?url=https%3A%2F%2Finternal-domain-name-calculator-for-truecharts-apps.johng.io&up_message=internal-domain-name-calculator-for-truecharts-apps.johng.io%20%E2%86%97" alt="Project URL" title="Project URL">
 		</a>
   </p>
