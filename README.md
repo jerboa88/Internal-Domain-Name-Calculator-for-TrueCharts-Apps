@@ -20,7 +20,7 @@
 		</a>
   </p>
 
-  <p class="projectDesc" data-exposition="An online tool to find internal domain names of certain TrueNAS apps. This project was created to solve a personal need and as a way to learn more about the DNS-based service discovery mechanism that Kubernetes uses.">
+  <p class="projectDesc">
     An online tool to find the internal domain name of a TrueCharts app
   </p>
 
