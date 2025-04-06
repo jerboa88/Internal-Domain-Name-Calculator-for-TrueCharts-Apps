@@ -1,0 +1,18 @@
+{
+  "$schema": "https://johng.io/schema/project-metadata.json",
+  "name": "Internal Domain Name Calculator for TrueCharts Apps",
+  "background": "An online tool to find internal domain names of certain TrueNAS apps. This project was created to solve a personal need and as a way to learn more about the DNS-based service discovery mechanism that Kubernetes uses.",
+	"logoPath": "src/android-chrome-512x512.png",
+	"category": "App",
+	"subcategory": "Web",
+  "technologies": [
+    "Kubernetes",
+    "Cypress",
+    "Gulp"
+  ],
+  "schema": {
+    "type": "Web",
+    "applicationCategory": "Developer",
+    "operatingSystem": "Any"
+  }
+}
