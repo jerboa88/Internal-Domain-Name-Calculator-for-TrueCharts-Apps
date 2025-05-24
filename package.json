@@ -29,16 +29,16 @@
   },
   "homepage": "https://github.com/jerboa88/Internal-Domain-Name-Calculator-for-TrueCharts-Apps",
   "devDependencies": {
-    "cypress": "^13.6.6",
-    "gulp": "^4.0.2",
+    "cypress": "^14.4.0",
+    "gulp": "^5.0.0",
     "gulp-connect": "^5.7.0",
-    "gulp-copy": "^4.0.1",
+    "gulp-copy": "^5.0.0",
     "gulp-htmlmin": "^5.0.1",
-    "gulp-imagemin": "^9.0.0",
-    "gulp-sass": "^5.1.0",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-sass": "^6.0.1",
     "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-uglify": "^3.0.2",
-    "node-sass": "^9.0.0",
+    "sass": "^1.89.0",
     "typescript": "^5.4.2"
   },
   "type": "module"
